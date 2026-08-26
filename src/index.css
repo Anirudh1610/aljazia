@@ -15,8 +15,23 @@ body {
 a { color: var(--color-accent-700); text-underline-offset: 3px; }
 a:hover { color: var(--color-accent-900); }
 
+.ajz-menu-btn { display: none; }
+
 @media (max-width: 900px) {
   .ajz-grid3 { grid-template-columns: 1fr !important; }
   .ajz-split { grid-template-columns: 1fr !important; }
   .ajz-navlinks { display: none !important; }
+  .ajz-menu-btn { display: inline-flex !important; }
+}
+
+@media (min-width: 901px) {
+  .ajz-mobile-nav { display: none !important; }
+}
+
+@media (max-width: 480px) {
+  .ajz-tagline { display: none !important; }
+}
+
+@media (max-width: 420px) {
+  .ajz-header-cta { display: none !important; }
 }

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
 
 const NAV_LINKS = [
@@ -18,7 +19,22 @@ const navLinkStyle = ({ isActive }) => ({
   color: isActive ? "var(--color-accent-700)" : "inherit",
 });
 
+const mobileNavLinkStyle = ({ isActive }) => ({
+  display: "block",
+  padding: "14px 4px",
+  fontSize: 15,
+  letterSpacing: "0.02em",
+  textTransform: "uppercase",
+  fontFamily: "var(--font-heading)",
+  fontWeight: 600,
+  textDecoration: "none",
+  borderBottom: "1px solid var(--color-divider)",
+  color: isActive ? "var(--color-accent-700)" : "inherit",
+});
+
 export default function Layout() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <div style={{ minHeight: "100vh", background: "var(--color-bg)" }}>
       <header
@@ -35,10 +51,10 @@ export default function Layout() {
           style={{
             maxWidth: 1240,
             margin: "0 auto",
-            padding: "14px clamp(20px, 5vw, 72px)",
+            padding: "14px clamp(16px, 5vw, 72px)",
             display: "flex",
             alignItems: "center",
-            gap: 28,
+            gap: 20,
           }}
         >
           <Link
@@ -60,16 +76,19 @@ export default function Layout() {
                 letterSpacing: "0.06em",
                 textTransform: "uppercase",
                 lineHeight: 1,
+                whiteSpace: "nowrap",
               }}
             >
               Al-Jazia
             </span>
             <span
+              className="ajz-tagline"
               style={{
                 fontSize: 11,
                 lineHeight: 1,
                 letterSpacing: "0.14em",
                 textTransform: "uppercase",
+                whiteSpace: "nowrap",
                 color: "color-mix(in srgb, var(--color-text) 55%, transparent)",
               }}
             >
@@ -83,10 +102,54 @@ export default function Layout() {
               </NavLink>
             ))}
           </nav>
-          <Link to="/contact" className="btn btn-primary" style={{ letterSpacing: "0.04em" }}>
+          <Link
+            to="/contact"
+            className="ajz-header-cta btn btn-primary"
+            style={{ letterSpacing: "0.04em", whiteSpace: "nowrap" }}
+          >
             Request a quote
           </Link>
+          <button
+            type="button"
+            className="ajz-menu-btn btn btn-secondary"
+            aria-expanded={menuOpen}
+            aria-controls="ajz-mobile-nav"
+            aria-label="Toggle navigation menu"
+            onClick={() => setMenuOpen((open) => !open)}
+            style={{ padding: 8, width: 36, height: 36 }}
+          >
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+              {menuOpen ? (
+                <path d="M4 4l10 10M14 4L4 14" />
+              ) : (
+                <path d="M2 5h14M2 9h14M2 13h14" />
+              )}
+            </svg>
+          </button>
         </div>
+
+        {menuOpen && (
+          <nav
+            id="ajz-mobile-nav"
+            className="ajz-mobile-nav"
+            style={{
+              borderTop: "1px solid var(--color-divider)",
+              padding: "4px clamp(16px, 5vw, 72px) 8px",
+            }}
+          >
+            {NAV_LINKS.map((link) => (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                end={link.end}
+                style={mobileNavLinkStyle}
+                onClick={() => setMenuOpen(false)}
+              >
+                {link.label}
+              </NavLink>
+            ))}
+          </nav>
+        )}
       </header>
 
       <main>

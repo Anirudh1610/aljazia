@@ -112,7 +112,8 @@ export default function Home() {
                 Sheet 01
               </span>
             </header>
-            <table className="table" style={{ tableLayout: "fixed" }}>
+            <div style={{ overflowX: "auto" }}>
+            <table className="table" style={{ tableLayout: "fixed", minWidth: 560 }}>
               <thead>
                 <tr>
                   <th scope="col" style={{ width: 72, padding: "12px 24px", fontSize: 13 }}>
@@ -185,6 +186,7 @@ export default function Home() {
                 })}
               </tbody>
             </table>
+            </div>
             <p
               style={{
                 margin: 0,
