@@ -47,3 +47,8 @@
   --shadow-md: 0 3px 10px color-mix(in srgb, #2b2b2d 16%, transparent);
   --shadow-lg: 0 12px 32px color-mix(in srgb, #2b2b2d 22%, transparent);
 }
+
+:root[dir="rtl"] {
+  --font-heading: "Noto Kufi Arabic", system-ui, sans-serif;
+  --font-body: "Noto Sans Arabic", system-ui, sans-serif;
+}

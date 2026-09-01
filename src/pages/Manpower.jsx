@@ -1,31 +1,25 @@
 import { Link } from "react-router-dom";
 import Blueprint from "../components/Blueprint";
 import { whyStaffing } from "../data/staffing";
-
-const IT_TAGS = ["Software engineers", "Network & infrastructure", "Cloud & DevOps", "Cybersecurity", "DBA", "Service desk"];
-const NON_IT_TAGS = [
-  "Technicians",
-  "Warehouse & logistics",
-  "Drivers (light & heavy)",
-  "Administration",
-  "Facility & cleaning",
-  "Hospitality",
-];
+import { useLang, withLang } from "../i18n/lang";
+import { strings } from "../i18n/strings";
 
 export default function Manpower() {
+  const lang = useLang();
+  const t = strings[lang].manpower;
+
   return (
     <>
       <section className="ajz-page">
         <div style={{ padding: "72px 0 44px" }}>
-          <span className="ajz-kicker">Manpower · IT &amp; Non-IT</span>
+          <span className="ajz-kicker">{t.kicker}</span>
           <hr className="ajz-rule" style={{ marginBottom: 24 }} />
           <h1 className="ajz-h1">
-            <span style={{ display: "block" }}>Staff who are cleared,</span>
-            <span style={{ display: "block", color: "var(--color-accent-700)" }}>badged and on site.</span>
+            <span style={{ display: "block" }}>{t.headingLine1}</span>
+            <span style={{ display: "block", color: "var(--color-accent-700)" }}>{t.headingLine2}</span>
           </h1>
           <p className="ajz-lead" style={{ fontSize: 17, lineHeight: "28px" }}>
-            Contract, outsourced, temporary or permanent — from cloud engineers to warehouse crews, mobilised under
-            Kuwaiti labour law with visas, medicals and residency handled by us.
+            {t.lead}
           </p>
         </div>
 
@@ -40,16 +34,13 @@ export default function Manpower() {
         >
           <div>
             <h2 style={{ fontSize: 28, lineHeight: "30px", letterSpacing: "0.02em", textTransform: "uppercase" }}>
-              IT manpower
+              {t.itTitle}
             </h2>
             <p className="ajz-muted" style={{ fontSize: 15, lineHeight: "24px", margin: "16px 0 0" }}>
-              Technically screened specialists across software development, networking, cloud, cybersecurity,
-              database administration, DevOps, systems engineering and service desk. Every candidate passes a
-              practical assessment and background verification before the CV reaches you — short-term project cover
-              or long-term strategic hires.
+              {t.itBody}
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 20 }}>
-              {IT_TAGS.map((tag) => (
+              {t.itTags.map((tag) => (
                 <span key={tag} className="tag tag-outline" style={{ fontSize: 12, padding: "4px 10px" }}>
                   {tag}
                 </span>
@@ -58,15 +49,13 @@ export default function Manpower() {
           </div>
           <div>
             <h2 style={{ fontSize: 28, lineHeight: "30px", letterSpacing: "0.02em", textTransform: "uppercase" }}>
-              Non-IT workforce
+              {t.nonItTitle}
             </h2>
             <p className="ajz-muted" style={{ fontSize: 15, lineHeight: "24px", margin: "16px 0 0" }}>
-              Administrative staff, technicians, storekeepers, drivers, logistics and warehouse crews, sales
-              executives, cleaners, security and hospitality personnel. Medically cleared, background-verified and
-              trained to the site's standard, with supervision and replacement cover written into the contract.
+              {t.nonItBody}
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 20 }}>
-              {NON_IT_TAGS.map((tag) => (
+              {t.nonItTags.map((tag) => (
                 <span key={tag} className="tag tag-outline" style={{ fontSize: 12, padding: "4px 10px" }}>
                   {tag}
                 </span>
@@ -76,19 +65,19 @@ export default function Manpower() {
         </div>
 
         <div style={{ paddingBottom: 72 }}>
-          <span className="ajz-kicker">Why clients place manpower with us</span>
+          <span className="ajz-kicker">{t.whyKicker}</span>
           <hr className="ajz-rule" />
           <div
             className="ajz-grid3"
             style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "clamp(24px, 3vw, 48px)" }}
           >
             {whyStaffing.map((w) => (
-              <Blueprint key={w.title} className="ajz-panel">
+              <Blueprint key={w.title.en} className="ajz-panel">
                 <h3 style={{ fontSize: 20, lineHeight: "24px", letterSpacing: "0.02em", textTransform: "uppercase" }}>
-                  {w.title}
+                  {w.title[lang]}
                 </h3>
                 <p className="ajz-muted" style={{ fontSize: 15, lineHeight: "24px", margin: "12px 0 0" }}>
-                  {w.body}
+                  {w.body[lang]}
                 </p>
               </Blueprint>
             ))}
@@ -117,10 +106,10 @@ export default function Manpower() {
               maxWidth: "26ch",
             }}
           >
-            Tell us the roles and the start date.
+            {t.ctaHeading}
           </h2>
           <Link
-            to="/contact"
+            to={withLang("/contact", lang)}
             className="btn"
             style={{
               minHeight: 40,
@@ -130,7 +119,7 @@ export default function Manpower() {
               borderColor: "var(--color-bg)",
             }}
           >
-            Request manpower
+            {t.ctaButton}
           </Link>
         </div>
       </div>

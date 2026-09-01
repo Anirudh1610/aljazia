@@ -1,12 +1,16 @@
-import { useState } from "react";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
+import { useLang, withLang, toggleLangPath } from "../i18n/lang";
+import { strings } from "../i18n/strings";
+import logoFull from "../assets/logo-full.png";
 
-const NAV_LINKS = [
-  { to: "/", label: "Home", end: true },
-  { to: "/divisions", label: "Divisions" },
-  { to: "/manpower", label: "Manpower" },
-  { to: "/about", label: "About" },
-  { to: "/contact", label: "Contact" },
+const NAV_KEYS = [
+  { path: "", key: "home", end: true },
+  { path: "divisions", key: "divisions" },
+  { path: "manpower", key: "manpower" },
+  { path: "partners", key: "partners" },
+  { path: "about", key: "about" },
+  { path: "contact", key: "contact" },
 ];
 
 const navLinkStyle = ({ isActive }) => ({
@@ -34,6 +38,25 @@ const mobileNavLinkStyle = ({ isActive }) => ({
 
 export default function Layout() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const lang = useLang();
+  const t = strings[lang].nav;
+  const tFooter = strings[lang].footer;
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+  }, [lang]);
+
+  const otherLangPath = toggleLangPath(pathname);
+  const langLinkStyle = (active) => ({
+    textDecoration: "none",
+    fontFamily: "var(--font-heading)",
+    fontWeight: 600,
+    fontSize: 12.5,
+    letterSpacing: "0.04em",
+    color: active ? "var(--color-accent-700)" : "inherit",
+  });
 
   return (
     <div style={{ minHeight: "100vh", background: "var(--color-bg)" }}>
@@ -58,29 +81,17 @@ export default function Layout() {
           }}
         >
           <Link
-            to="/"
+            to={withLang("/", lang)}
             style={{
-              marginRight: "auto",
+              marginInlineEnd: "auto",
               display: "flex",
-              alignItems: "baseline",
+              alignItems: "center",
               gap: 10,
               textDecoration: "none",
               color: "inherit",
             }}
           >
-            <span
-              style={{
-                fontFamily: "var(--font-heading)",
-                fontWeight: 600,
-                fontSize: 22,
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
-                lineHeight: 1,
-                whiteSpace: "nowrap",
-              }}
-            >
-              Al-Jazia
-            </span>
+            <img src={logoFull} alt="Al-Jazia International" style={{ height: 46, width: "auto", flex: "none" }} />
             <span
               className="ajz-tagline"
               style={{
@@ -92,22 +103,33 @@ export default function Layout() {
                 color: "color-mix(in srgb, var(--color-text) 55%, transparent)",
               }}
             >
-              Int'l General Trading Co.
+              {t.tagline}
             </span>
           </Link>
           <nav className="ajz-navlinks" style={{ display: "flex", alignItems: "center", gap: 22 }}>
-            {NAV_LINKS.map((link) => (
-              <NavLink key={link.to} to={link.to} end={link.end} style={navLinkStyle}>
-                {link.label}
+            {NAV_KEYS.map((link) => (
+              <NavLink key={link.path} to={withLang("/" + link.path, lang)} end={link.end} style={navLinkStyle}>
+                {t[link.key]}
               </NavLink>
             ))}
           </nav>
+          <div className="ajz-lang-switch" style={{ display: "flex", alignItems: "center", gap: 6 }}>
+            <Link to={lang === "en" ? pathname : otherLangPath} style={langLinkStyle(lang === "en")}>
+              EN
+            </Link>
+            <span style={{ color: "var(--color-divider)" }} aria-hidden="true">
+              /
+            </span>
+            <Link to={lang === "ar" ? pathname : otherLangPath} style={langLinkStyle(lang === "ar")}>
+              AR
+            </Link>
+          </div>
           <Link
-            to="/contact"
+            to={withLang("/contact", lang)}
             className="ajz-header-cta btn btn-primary"
             style={{ letterSpacing: "0.04em", whiteSpace: "nowrap" }}
           >
-            Request a quote
+            {t.cta}
           </Link>
           <button
             type="button"
@@ -137,17 +159,33 @@ export default function Layout() {
               padding: "4px clamp(16px, 5vw, 72px) 8px",
             }}
           >
-            {NAV_LINKS.map((link) => (
+            {NAV_KEYS.map((link) => (
               <NavLink
-                key={link.to}
-                to={link.to}
+                key={link.path}
+                to={withLang("/" + link.path, lang)}
                 end={link.end}
                 style={mobileNavLinkStyle}
                 onClick={() => setMenuOpen(false)}
               >
-                {link.label}
+                {t[link.key]}
               </NavLink>
             ))}
+            <div style={{ display: "flex", gap: 14, padding: "14px 4px" }}>
+              <Link
+                to={lang === "en" ? pathname : otherLangPath}
+                onClick={() => setMenuOpen(false)}
+                style={langLinkStyle(lang === "en")}
+              >
+                EN
+              </Link>
+              <Link
+                to={lang === "ar" ? pathname : otherLangPath}
+                onClick={() => setMenuOpen(false)}
+                style={langLinkStyle(lang === "ar")}
+              >
+                AR
+              </Link>
+            </div>
           </nav>
         )}
       </header>
@@ -180,7 +218,7 @@ export default function Layout() {
                 textTransform: "uppercase",
               }}
             >
-              Al-Jazia International General Trading
+              {tFooter.name}
             </span>
             <span
               style={{
@@ -191,8 +229,7 @@ export default function Layout() {
                 color: "color-mix(in srgb, var(--color-text) 70%, transparent)",
               }}
             >
-              Office 1, Floor 6, Bader Lafi Khaled Al-Mutairi Building · Eqaila, Block 5 · Ahmadi 54205, Kuwait ·
-              info@al-jazia.com
+              {tFooter.address}
             </span>
           </div>
           <span
@@ -202,7 +239,7 @@ export default function Layout() {
               color: "color-mix(in srgb, var(--color-text) 70%, transparent)",
             }}
           >
-            © 2026 Al-Jazia International General Trading Co. W.L.L.
+            {tFooter.copyright}
           </span>
         </div>
       </footer>

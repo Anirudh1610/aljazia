@@ -108,7 +108,7 @@ textarea.input { min-height: 90px; resize: vertical; }
 /* — tables — */
 .table { width: 100%; border-collapse: collapse; font-size: 14px; }
 .table th {
-  text-align: left;
+  text-align: start;
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;

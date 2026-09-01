@@ -2,56 +2,32 @@ import { Link } from "react-router-dom";
 import Blueprint from "../components/Blueprint";
 import ImagePlaceholder from "../components/ImagePlaceholder";
 import { divisions } from "../data/divisions";
+import { useLang, withLang } from "../i18n/lang";
+import { strings } from "../i18n/strings";
 import warehousePhoto from "../assets/warehouse.jpg";
 
-const PROCUREMENT_STEPS = [
-  {
-    step: "01",
-    stage: "Enquiry & technical review",
-    turnaround: "24 hrs",
-    receive: "Clarifications, alternates, datasheets",
-  },
-  {
-    step: "02",
-    stage: "Priced quotation",
-    turnaround: "48 hrs",
-    receive: "Line-item pricing, KD, validity stated",
-  },
-  {
-    step: "03",
-    stage: "Order & documentation",
-    turnaround: "Same day",
-    receive: "PO acknowledgement, compliance file",
-  },
-  {
-    step: "04",
-    stage: "Delivery to site or store",
-    turnaround: "Scheduled",
-    receive: "Signed delivery note, warranty papers",
-  },
-];
-
 export default function Home() {
+  const lang = useLang();
+  const t = strings[lang].home;
+
   return (
     <>
       <section className="ajz-page">
         <div style={{ padding: "96px 0 72px" }}>
           <h1 className="ajz-h1" style={{ fontSize: "clamp(44px, 6.4vw, 92px)" }}>
-            <span style={{ display: "block" }}>One supplier.</span>
-            <span style={{ display: "block" }}>Ten divisions.</span>
-            <span style={{ display: "block", color: "var(--color-accent-700)" }}>Kuwait, delivered.</span>
+            <span style={{ display: "block" }}>{t.heroLine1}</span>
+            <span style={{ display: "block" }}>{t.heroLine2}</span>
+            <span style={{ display: "block", color: "var(--color-accent-700)" }}>{t.heroLine3}</span>
           </h1>
           <p className="ajz-lead" style={{ fontSize: 17, lineHeight: "28px" }}>
-            Al-Jazia International General Trading supplies ministries, oil-sector operators, contractors and
-            retailers across Kuwait — from building materials and safety equipment to certified IT and non-IT
-            manpower. One vendor record, one point of contact, one delivery note.
+            {t.lead}
           </p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 32 }}>
-            <Link to="/contact" className="btn btn-primary" style={{ minHeight: 40, paddingInline: 20 }}>
-              Submit an RFQ
+            <Link to={withLang("/contact", lang)} className="btn btn-primary" style={{ minHeight: 40, paddingInline: 20 }}>
+              {t.ctaPrimary}
             </Link>
-            <Link to="/divisions" className="btn btn-secondary" style={{ minHeight: 40, paddingInline: 20 }}>
-              See all divisions
+            <Link to={withLang("/divisions", lang)} className="btn btn-secondary" style={{ minHeight: 40, paddingInline: 20 }}>
+              {t.ctaSecondary}
             </Link>
           </div>
         </div>
@@ -79,12 +55,12 @@ export default function Home() {
                   fontWeight: 600,
                 }}
               >
-                How we supply
+                {t.tableTitle}
               </span>
               <span
                 style={{
                   padding: "12px 24px",
-                  borderLeft: "1px solid var(--color-divider)",
+                  borderInlineStart: "1px solid var(--color-divider)",
                   whiteSpace: "nowrap",
                   fontSize: 13,
                   lineHeight: "24px",
@@ -94,12 +70,12 @@ export default function Home() {
                   color: "color-mix(in srgb, var(--color-text) 70%, transparent)",
                 }}
               >
-                Procurement cycle
+                {t.tableCycle}
               </span>
               <span
                 style={{
                   padding: "12px 24px",
-                  borderLeft: "1px solid var(--color-divider)",
+                  borderInlineStart: "1px solid var(--color-divider)",
                   whiteSpace: "nowrap",
                   fontSize: 13,
                   lineHeight: "24px",
@@ -109,7 +85,7 @@ export default function Home() {
                   color: "color-mix(in srgb, var(--color-text) 70%, transparent)",
                 }}
               >
-                Sheet 01
+                {t.tableSheet}
               </span>
             </header>
             <div style={{ overflowX: "auto" }}>
@@ -117,22 +93,22 @@ export default function Home() {
               <thead>
                 <tr>
                   <th scope="col" style={{ width: 72, padding: "12px 24px", fontSize: 13 }}>
-                    Step
+                    {t.colStep}
                   </th>
-                  <th scope="col" style={{ padding: "12px 24px 12px 0", fontSize: 13 }}>
-                    Stage
+                  <th scope="col" style={{ paddingBlock: 12, paddingInlineEnd: 24, paddingInlineStart: 0, fontSize: 13 }}>
+                    {t.colStage}
                   </th>
-                  <th scope="col" style={{ width: "22%", padding: "12px 24px 12px 0", fontSize: 13 }}>
-                    Turnaround
+                  <th scope="col" style={{ width: "22%", paddingBlock: 12, paddingInlineEnd: 24, paddingInlineStart: 0, fontSize: 13 }}>
+                    {t.colTurnaround}
                   </th>
-                  <th scope="col" style={{ padding: "12px 24px 12px 0", fontSize: 13 }}>
-                    What you receive
+                  <th scope="col" style={{ paddingBlock: 12, paddingInlineEnd: 24, paddingInlineStart: 0, fontSize: 13 }}>
+                    {t.colReceive}
                   </th>
                 </tr>
               </thead>
               <tbody>
-                {PROCUREMENT_STEPS.map((row, i) => {
-                  const last = i === PROCUREMENT_STEPS.length - 1;
+                {t.steps.map((row, i) => {
+                  const last = i === t.steps.length - 1;
                   return (
                     <tr key={row.step}>
                       <td
@@ -149,7 +125,9 @@ export default function Home() {
                       </td>
                       <td
                         style={{
-                          padding: "12px 24px 12px 0",
+                          paddingBlock: 12,
+                          paddingInlineEnd: 24,
+                          paddingInlineStart: 0,
                           fontSize: 15,
                           lineHeight: "24px",
                           borderBottom: last ? 0 : undefined,
@@ -159,7 +137,9 @@ export default function Home() {
                       </td>
                       <td
                         style={{
-                          padding: "12px 24px 12px 0",
+                          paddingBlock: 12,
+                          paddingInlineEnd: 24,
+                          paddingInlineStart: 0,
                           fontFamily: "var(--font-heading)",
                           fontWeight: 600,
                           fontSize: 22,
@@ -172,7 +152,9 @@ export default function Home() {
                       </td>
                       <td
                         style={{
-                          padding: "12px 24px 12px 0",
+                          paddingBlock: 12,
+                          paddingInlineEnd: 24,
+                          paddingInlineStart: 0,
                           fontSize: 15,
                           lineHeight: "24px",
                           color: "color-mix(in srgb, var(--color-text) 78%, transparent)",
@@ -197,22 +179,21 @@ export default function Home() {
                 color: "color-mix(in srgb, var(--color-text) 70%, transparent)",
               }}
             >
-              Indicative cycle for stocked and agency lines; project and tender items are quoted to schedule.
-              Placeholder figures — confirm before publishing.
+              {t.footnote}
             </p>
           </Blueprint>
         </div>
 
         {/* divisions grid */}
         <div style={{ paddingBottom: 72 }}>
-          <span className="ajz-kicker">02 · What we supply</span>
+          <span className="ajz-kicker">{t.kicker2}</span>
           <hr className="ajz-rule" />
           <div
             className="ajz-grid3"
             style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "clamp(24px, 3vw, 48px)" }}
           >
             {divisions.map((d) => (
-              <Link key={d.no} to="/divisions" style={{ textDecoration: "none", color: "inherit" }}>
+              <Link key={d.no} to={withLang("/divisions", lang)} style={{ textDecoration: "none", color: "inherit" }}>
                 <Blueprint className="ajz-panel" style={{ cursor: "pointer" }}>
                   <span
                     style={{
@@ -234,10 +215,10 @@ export default function Home() {
                       textTransform: "uppercase",
                     }}
                   >
-                    {d.title}
+                    {d.title[lang]}
                   </h2>
                   <p className="ajz-muted" style={{ fontSize: 15, lineHeight: "24px", margin: "12px 0 0" }}>
-                    {d.blurb}
+                    {d.blurb[lang]}
                   </p>
                 </Blueprint>
               </Link>
@@ -257,21 +238,19 @@ export default function Home() {
           }}
         >
           <div>
-            <span className="ajz-kicker">03 · On the ground</span>
+            <span className="ajz-kicker">{t.kicker3}</span>
             <hr className="ajz-rule" style={{ marginBottom: 24 }} />
             <h2 style={{ fontSize: 32, lineHeight: "36px", letterSpacing: "0.02em", textTransform: "uppercase" }}>
-              Warehoused in Kuwait, not on a waiting list
+              {t.groundTitle}
             </h2>
             <p className="ajz-muted" style={{ fontSize: 15, lineHeight: "24px", margin: "20px 0 0", maxWidth: "48ch" }}>
-              Stock held at our Eqaila premises in Ahmadi with our own delivery fleet, so a site call in the morning
-              is a signed delivery note in the afternoon. Project quantities are consolidated at origin and cleared
-              through Shuaiba by our own documentation team.
+              {t.groundBody}
             </p>
           </div>
           <ImagePlaceholder
             src={warehousePhoto}
-            alt="Al-Jazia warehouse and delivery fleet"
-            placeholder="Warehouse / fleet photo"
+            alt={t.groundPhotoCaption}
+            placeholder={t.groundPhotoCaption}
             style={{ width: "100%", aspectRatio: "16 / 10" }}
           />
         </div>
@@ -280,11 +259,8 @@ export default function Home() {
       {/* steel field CTA */}
       <div style={{ background: "var(--color-accent-900)", color: "var(--color-bg)" }}>
         <div className="ajz-page" style={{ padding: "72px clamp(20px, 5vw, 72px)" }}>
-          <span
-            className="ajz-kicker"
-            style={{ color: "var(--color-accent-300)" }}
-          >
-            04 · Next step
+          <span className="ajz-kicker" style={{ color: "var(--color-accent-300)" }}>
+            {t.kicker4}
           </span>
           <h2
             style={{
@@ -295,7 +271,7 @@ export default function Home() {
               maxWidth: "24ch",
             }}
           >
-            Send the list. We'll price it.
+            {t.ctaHeading}
           </h2>
           <p
             style={{
@@ -306,12 +282,11 @@ export default function Home() {
               color: "color-mix(in srgb, #f2f2f3 82%, transparent)",
             }}
           >
-            Email a BOQ, a tender schedule or a scribbled part number. Quotations in Kuwaiti Dinar with stated
-            validity, delivery lead time and country of origin on every line.
+            {t.ctaBody}
           </p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 28 }}>
             <Link
-              to="/contact"
+              to={withLang("/contact", lang)}
               className="btn"
               style={{
                 minHeight: 40,
@@ -321,10 +296,10 @@ export default function Home() {
                 borderColor: "var(--color-bg)",
               }}
             >
-              Request a quotation
+              {t.ctaPrimary2}
             </Link>
             <Link
-              to="/manpower"
+              to={withLang("/manpower", lang)}
               className="btn"
               style={{
                 minHeight: 40,
@@ -333,7 +308,7 @@ export default function Home() {
                 borderColor: "color-mix(in srgb, #f2f2f3 40%, transparent)",
               }}
             >
-              Hiring manpower instead?
+              {t.ctaSecondary2}
             </Link>
           </div>
         </div>

@@ -1,19 +1,19 @@
 import Blueprint from "../components/Blueprint";
 import { whyUs } from "../data/about";
+import { useLang } from "../i18n/lang";
+import { strings } from "../i18n/strings";
 
 export default function About() {
+  const lang = useLang();
+  const t = strings[lang].about;
+
   return (
     <section className="ajz-page">
       <div style={{ padding: "72px 0 44px" }}>
-        <span className="ajz-kicker">About</span>
+        <span className="ajz-kicker">{t.kicker}</span>
         <hr className="ajz-rule" style={{ marginBottom: 24 }} />
-        <h1 className="ajz-h1">A Kuwaiti trading house built on repeat orders</h1>
-        <p className="ajz-lead">
-          Al-Jazia began as a single-counter supply business and grew the way trading houses in Kuwait do: one
-          client asks for something outside the catalogue, you source it properly, and the next enquiry arrives. Ten
-          divisions later the discipline is unchanged — quote honestly, deliver on the date, keep the paperwork
-          clean.
-        </p>
+        <h1 className="ajz-h1">{t.heading}</h1>
+        <p className="ajz-lead">{t.lead}</p>
       </div>
 
       <div
@@ -32,11 +32,9 @@ export default function About() {
               marginBottom: 10,
             }}
           >
-            Vision
+            {t.visionLabel}
           </span>
-          <p style={{ fontSize: 16, lineHeight: "26px", margin: 0 }}>
-            To be the supplier Kuwaiti buyers call first — because the answer is usually yes, and always honest.
-          </p>
+          <p style={{ fontSize: 16, lineHeight: "26px", margin: 0 }}>{t.visionText}</p>
         </Blueprint>
         <Blueprint className="ajz-panel">
           <span
@@ -50,12 +48,9 @@ export default function About() {
               marginBottom: 10,
             }}
           >
-            Mission
+            {t.missionLabel}
           </span>
-          <p style={{ fontSize: 16, lineHeight: "26px", margin: 0 }}>
-            Consolidate ten supply categories and a manpower desk under one accountable vendor, so our clients spend
-            less time procuring and more time operating.
-          </p>
+          <p style={{ fontSize: 16, lineHeight: "26px", margin: 0 }}>{t.missionText}</p>
         </Blueprint>
         <Blueprint className="ajz-panel">
           <span
@@ -69,17 +64,14 @@ export default function About() {
               marginBottom: 10,
             }}
           >
-            Values
+            {t.valuesLabel}
           </span>
-          <p style={{ fontSize: 16, lineHeight: "26px", margin: 0 }}>
-            Say the real lead time. Price the same for everyone. Stand behind the origin certificate. Answer the
-            phone after the invoice.
-          </p>
+          <p style={{ fontSize: 16, lineHeight: "26px", margin: 0 }}>{t.valuesText}</p>
         </Blueprint>
       </div>
 
       <div style={{ paddingBottom: 72 }}>
-        <span className="ajz-kicker">Why buyers choose Al-Jazia</span>
+        <span className="ajz-kicker">{t.whyKicker}</span>
         <hr className="ajz-rule" style={{ marginBottom: 24 }} />
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "0 40px" }}>
           {whyUs.map((w) => (
@@ -96,7 +88,7 @@ export default function About() {
               <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.1em", color: "var(--color-accent-700)", flex: "none" }}>
                 {w.no}
               </span>
-              <span style={{ fontSize: 15, lineHeight: "24px" }}>{w.text}</span>
+              <span style={{ fontSize: 15, lineHeight: "24px" }}>{w.text[lang]}</span>
             </div>
           ))}
         </div>

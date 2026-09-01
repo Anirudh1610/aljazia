@@ -1,17 +1,19 @@
 import Blueprint from "../components/Blueprint";
 import { divisions } from "../data/divisions";
+import { useLang } from "../i18n/lang";
+import { strings } from "../i18n/strings";
 
 export default function Divisions() {
+  const lang = useLang();
+  const t = strings[lang].divisionsPage;
+
   return (
     <section className="ajz-page">
       <div style={{ padding: "72px 0 44px" }}>
-        <span className="ajz-kicker">Divisions</span>
+        <span className="ajz-kicker">{t.kicker}</span>
         <hr className="ajz-rule" style={{ marginBottom: 24 }} />
-        <h1 className="ajz-h1">Ten supply lines, one vendor record</h1>
-        <p className="ajz-lead">
-          Each division runs its own buyers and its own supplier network, and all of them quote on one letterhead —
-          so a mixed order does not become five vendor registrations.
-        </p>
+        <h1 className="ajz-h1">{t.heading}</h1>
+        <p className="ajz-lead">{t.lead}</p>
       </div>
 
       <div style={{ paddingBottom: 72, display: "grid", gap: "clamp(24px, 3vw, 40px)" }}>
@@ -40,10 +42,10 @@ export default function Divisions() {
                 {d.no}
               </span>
               <h2 style={{ fontSize: 26, lineHeight: "28px", letterSpacing: "0.02em", textTransform: "uppercase" }}>
-                {d.title}
+                {d.title[lang]}
               </h2>
               <p className="ajz-muted" style={{ fontSize: 15, lineHeight: "24px", margin: "12px 0 0" }}>
-                {d.blurb}
+                {d.blurb[lang]}
               </p>
             </div>
             <div>
@@ -59,11 +61,11 @@ export default function Divisions() {
                   margin: "0 0 10px",
                 }}
               >
-                Typical lines
+                {t.typicalLines}
               </span>
               <hr className="ajz-rule" style={{ marginBottom: 14 }} />
               <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                {d.items.map((item) => (
+                {d.items[lang].map((item) => (
                   <span key={item} className="tag tag-outline" style={{ fontSize: 12, padding: "4px 10px" }}>
                     {item}
                   </span>
