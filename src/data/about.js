@@ -30,14 +30,14 @@ export const whyUs = [
   {
     no: "05",
     text: {
-      en: "Bilingual account handling — Arabic and English, on the phone and on paper.",
-      ar: "إدارة حسابات ثنائية اللغة — بالعربية والإنجليزية، هاتفيًا وورقيًا.",
+      en: "Bilingual account handling - Arabic and English, on the phone and on paper.",
+      ar: "إدارة حسابات ثنائية اللغة - بالعربية والإنجليزية، هاتفيًا وورقيًا.",
     },
   },
   {
     no: "06",
     text: {
-      en: "One contract and one invoice across eight divisions, including manpower.",
+      en: "Manpower - screened, medically cleared, background-verified and trained to the site's standard, with supervision and replacement cover written into the contract.",
       ar: "عقد واحد وفاتورة واحدة عبر ثماني أقسام، بما في ذلك القوى العاملة.",
     },
   },

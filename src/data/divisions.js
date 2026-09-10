@@ -3,8 +3,8 @@ export const divisions = [
     no: "01",
     title: { en: "Manpower & staffing", ar: "القوى العاملة والتوظيف" },
     blurb: {
-      en: "Certified IT and non-IT personnel on contract, outsourced or permanent terms — mobilised under Kuwaiti labour law.",
-      ar: "كوادر معتمدة في المجالين التقني وغير التقني بعقود مؤقتة أو خارجية أو دائمة — يتم تعبئتهم وفق قانون العمل الكويتي.",
+      en: "Certified manpower on contract, either outsourced or on permanent terms - mobilised under Kuwaiti labour law.",
+      ar: "كوادر معتمدة في المجالين التقني وغير التقني بعقود مؤقتة أو خارجية أو دائمة - يتم تعبئتهم وفق قانون العمل الكويتي.",
     },
     items: {
       en: ["IT engineers", "Technicians", "Drivers", "Warehouse crews", "Administration", "Facility staff"],
@@ -15,8 +15,8 @@ export const divisions = [
     no: "02",
     title: { en: "IT (Information Technology) & OT (Operations Technology)", ar: "تقنية المعلومات (IT) وتقنية التشغيل (OT)" },
     blurb: {
-      en: "Consulting and custom development across mobile apps and AI — agentic frameworks, AI tools and intelligent surveillance — alongside manufacturing, process and digital asset management systems.",
-      ar: "استشارات وتطوير مخصص عبر تطبيقات الجوال والذكاء الاصطناعي — أطر عمل وكيلة، وأدوات ذكاء اصطناعي، وأنظمة مراقبة ذكية — إلى جانب حلول تطبيقات التصنيع والعمليات وإدارة الأصول الرقمية.",
+      en: "Consulting and custom development across mobile apps and AI - agentic frameworks, AI tools and intelligent surveillance - alongside manufacturing, process and digital asset management systems.",
+      ar: "استشارات وتطوير مخصص عبر تطبيقات الجوال والذكاء الاصطناعي - أطر عمل وكيلة، وأدوات ذكاء اصطناعي، وأنظمة مراقبة ذكية - إلى جانب حلول تطبيقات التصنيع والعمليات وإدارة الأصول الرقمية.",
     },
     items: {
       en: [
@@ -69,7 +69,7 @@ export const divisions = [
     no: "05",
     title: { en: "Electrical & mechanical", ar: "الكهرباء والميكانيكا" },
     blurb: {
-      en: "Power distribution, motive and HVAC equipment with datasheets and warranty documentation on delivery.",
+      en: "All Engineering and Process Industry Equipments and Tools",
       ar: "معدات توزيع الطاقة والمعدات المحرِّكة وأنظمة التكييف مع نشرات فنية ومستندات ضمان عند التسليم.",
     },
     items: {
@@ -81,7 +81,7 @@ export const divisions = [
     no: "06",
     title: { en: "Safety & PPE", ar: "السلامة ومعدات الوقاية الشخصية" },
     blurb: {
-      en: "Site-compliant protective equipment and rescue gear, sized and stocked for crews at scale.",
+      en: "Site-compliant protective equipment and rescue gear.",
       ar: "معدات وقاية شخصية متوافقة مع معايير المواقع ومعدات إنقاذ، بمقاسات ومخزون يناسب الطواقم الكبيرة.",
     },
     items: {
@@ -89,20 +89,9 @@ export const divisions = [
       ar: ["خوذات", "بدلات عمل", "أحذية سلامة", "أحزمة أمان", "أجهزة كشف الغازات", "معدات إطفاء"],
     },
   },
+
   {
     no: "07",
-    title: { en: "Foodstuff", ar: "المواد الغذائية" },
-    blurb: {
-      en: "Dry, chilled and frozen provisions for catering contracts, camps and retail, with cold-chain handling.",
-      ar: "مؤن جافة ومبرّدة ومجمّدة لعقود التموين والمخيمات والتجزئة، مع التعامل وفق سلسلة التبريد.",
-    },
-    items: {
-      en: ["Rice & pulses", "Oils", "Canned goods", "Frozen", "Dairy", "Beverages"],
-      ar: ["أرز وبقوليات", "زيوت", "معلبات", "مجمدات", "ألبان", "مشروبات"],
-    },
-  },
-  {
-    no: "08",
     title: { en: "General contracting", ar: "المقاولات العامة" },
     blurb: {
       en: "Civil, MEP and fit-out packages executed with our own supervision and subcontractor network.",

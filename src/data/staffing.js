@@ -16,8 +16,8 @@ export const whyStaffing = [
   {
     title: { en: "Fully compliant", ar: "امتثال كامل" },
     body: {
-      en: "Visas, medicals, residency, insurance and payroll handled to Kuwaiti labour regulations — audit-ready records.",
-      ar: "تأشيرات، وفحوصات طبية، وإقامات، وتأمين، ورواتب وفق أنظمة العمل الكويتية — بسجلّات جاهزة للتدقيق.",
+      en: "Visas, medicals, residency, insurance and payroll handled to Kuwaiti labour regulations - audit-ready records.",
+      ar: "تأشيرات، وفحوصات طبية، وإقامات، وتأمين، ورواتب وفق أنظمة العمل الكويتية - بسجلّات جاهزة للتدقيق.",
     },
   },
   {
@@ -37,7 +37,7 @@ export const whyStaffing = [
   {
     title: { en: "Scales both ways", ar: "مرونة في الحجم" },
     body: {
-      en: "One specialist or a hundred-strong crew, ramped up for a shutdown and down again without penalty games.",
+      en: "One specialist or a hundred-strong crew, ramped up for a shutdown and turnaround projects.",
       ar: "من موظف واحد إلى طاقم يضم مئة فرد، بزيادة أو تخفيض العدد وقت التوقفات الصيانية دون غرامات تعسفية.",
     },
   },

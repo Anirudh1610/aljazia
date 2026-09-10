@@ -1,4 +1,3 @@
-import Blueprint from "../components/Blueprint";
 import { whyUs } from "../data/about";
 import { useLang } from "../i18n/lang";
 import { strings } from "../i18n/strings";
@@ -14,60 +13,6 @@ export default function About() {
         <hr className="ajz-rule" style={{ marginBottom: 24 }} />
         <h1 className="ajz-h1">{t.heading}</h1>
         <p className="ajz-lead">{t.lead}</p>
-      </div>
-
-      <div
-        className="ajz-grid3"
-        style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "clamp(24px, 3vw, 48px)", paddingBottom: 60 }}
-      >
-        <Blueprint className="ajz-panel">
-          <span
-            style={{
-              display: "block",
-              fontSize: 12,
-              letterSpacing: "0.1em",
-              fontWeight: 600,
-              textTransform: "uppercase",
-              color: "var(--color-accent-700)",
-              marginBottom: 10,
-            }}
-          >
-            {t.visionLabel}
-          </span>
-          <p style={{ fontSize: 16, lineHeight: "26px", margin: 0 }}>{t.visionText}</p>
-        </Blueprint>
-        <Blueprint className="ajz-panel">
-          <span
-            style={{
-              display: "block",
-              fontSize: 12,
-              letterSpacing: "0.1em",
-              fontWeight: 600,
-              textTransform: "uppercase",
-              color: "var(--color-accent-700)",
-              marginBottom: 10,
-            }}
-          >
-            {t.missionLabel}
-          </span>
-          <p style={{ fontSize: 16, lineHeight: "26px", margin: 0 }}>{t.missionText}</p>
-        </Blueprint>
-        <Blueprint className="ajz-panel">
-          <span
-            style={{
-              display: "block",
-              fontSize: 12,
-              letterSpacing: "0.1em",
-              fontWeight: 600,
-              textTransform: "uppercase",
-              color: "var(--color-accent-700)",
-              marginBottom: 10,
-            }}
-          >
-            {t.valuesLabel}
-          </span>
-          <p style={{ fontSize: 16, lineHeight: "26px", margin: 0 }}>{t.valuesText}</p>
-        </Blueprint>
       </div>
 
       <div style={{ paddingBottom: 72 }}>

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Blueprint from "../components/Blueprint";
-import ImagePlaceholder from "../components/ImagePlaceholder";
 import { divisions } from "../data/divisions";
 import { useLang } from "../i18n/lang";
 import { strings } from "../i18n/strings";
@@ -75,51 +74,48 @@ export default function Contact() {
           </div>
         </Blueprint>
 
-        <div style={{ display: "grid", gap: 24 }}>
-          <Blueprint className="ajz-panel">
-            <span
-              style={{
-                display: "block",
-                fontSize: 12,
-                letterSpacing: "0.1em",
-                fontWeight: 600,
-                textTransform: "uppercase",
-                color: "var(--color-accent-700)",
-                marginBottom: 14,
-              }}
-            >
-              {t.officeLabel}
-            </span>
-            <p style={{ fontSize: 15, lineHeight: "26px", margin: 0 }}>
-              {t.addressLines.map((line, i) => (
-                <span key={line}>
-                  {line}
-                  {i < t.addressLines.length - 1 && <br />}
-                </span>
-              ))}
-            </p>
-            <hr className="ajz-rule" style={{ margin: "18px 0", marginBottom: 18 }} />
-            <p style={{ fontSize: 15, lineHeight: "26px", margin: 0 }}>
-              {t.phoneLines.map((line, i) => (
-                <span key={line}>
-                  {line}
-                  {i < t.phoneLines.length - 1 && <br />}
-                </span>
-              ))}
-            </p>
-            <p
-              style={{
-                fontSize: 12,
-                lineHeight: "20px",
-                margin: "14px 0 0",
-                color: "color-mix(in srgb, var(--color-text) 60%, transparent)",
-              }}
-            >
-              {t.placeholderNote}
-            </p>
-          </Blueprint>
-          <ImagePlaceholder placeholder={t.photoCaption} style={{ width: "100%", aspectRatio: "4 / 3" }} />
-        </div>
+        <Blueprint className="ajz-panel">
+          <span
+            style={{
+              display: "block",
+              fontSize: 12,
+              letterSpacing: "0.1em",
+              fontWeight: 600,
+              textTransform: "uppercase",
+              color: "var(--color-accent-700)",
+              marginBottom: 14,
+            }}
+          >
+            {t.officeLabel}
+          </span>
+          <p style={{ fontSize: 15, lineHeight: "26px", margin: 0 }}>
+            {t.addressLines.map((line, i) => (
+              <span key={line}>
+                {line}
+                {i < t.addressLines.length - 1 && <br />}
+              </span>
+            ))}
+          </p>
+          <hr className="ajz-rule" style={{ margin: "18px 0", marginBottom: 18 }} />
+          <p style={{ fontSize: 15, lineHeight: "26px", margin: 0 }}>
+            {t.phoneLines.map((line, i) => (
+              <span key={line}>
+                {line}
+                {i < t.phoneLines.length - 1 && <br />}
+              </span>
+            ))}
+          </p>
+          <p
+            style={{
+              fontSize: 12,
+              lineHeight: "20px",
+              margin: "14px 0 0",
+              color: "color-mix(in srgb, var(--color-text) 60%, transparent)",
+            }}
+          >
+            {t.placeholderNote}
+          </p>
+        </Blueprint>
       </div>
     </section>
   );
