@@ -38,7 +38,7 @@ export const whyStaffing = [
     title: { en: "Scales both ways", ar: "مرونة في الحجم" },
     body: {
       en: "One specialist or a hundred-strong crew, ramped up for a shutdown and turnaround projects.",
-      ar: "من موظف واحد إلى طاقم يضم مئة فرد، بزيادة أو تخفيض العدد وقت التوقفات الصيانية دون غرامات تعسفية.",
+      ar: "من موظف واحد إلى طاقم يضم مئة فرد، مع زيادة العدد لتغطية مشاريع التوقفات الصيانية وإعادة التشغيل.",
     },
   },
 ];

@@ -70,7 +70,7 @@ export const divisions = [
     title: { en: "Electrical & mechanical", ar: "الكهرباء والميكانيكا" },
     blurb: {
       en: "All Engineering and Process Industry Equipments and Tools",
-      ar: "معدات توزيع الطاقة والمعدات المحرِّكة وأنظمة التكييف مع نشرات فنية ومستندات ضمان عند التسليم.",
+      ar: "جميع معدات وأدوات الهندسة وصناعة العمليات التشغيلية.",
     },
     items: {
       en: ["Cables", "Switchgear", "Motors & pumps", "HVAC units", "Generators", "Lighting"],
@@ -82,7 +82,7 @@ export const divisions = [
     title: { en: "Safety & PPE", ar: "السلامة ومعدات الوقاية الشخصية" },
     blurb: {
       en: "Site-compliant protective equipment and rescue gear.",
-      ar: "معدات وقاية شخصية متوافقة مع معايير المواقع ومعدات إنقاذ، بمقاسات ومخزون يناسب الطواقم الكبيرة.",
+      ar: "معدات وقاية شخصية متوافقة مع معايير المواقع ومعدات إنقاذ.",
     },
     items: {
       en: ["Helmets", "Coveralls", "Safety footwear", "Harnesses", "Gas detection", "Fire equipment"],

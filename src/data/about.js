@@ -37,8 +37,8 @@ export const whyUs = [
   {
     no: "06",
     text: {
-      en: "Manpower - screened, medically cleared, background-verified and trained to the site's standard, with supervision and replacement cover written into the contract.",
-      ar: "عقد واحد وفاتورة واحدة عبر ثماني أقسام، بما في ذلك القوى العاملة.",
+      en: "One contract and one invoice across seven divisions, including manpower.",
+      ar: "عقد واحد وفاتورة واحدة عبر سبعة أقسام، بما في ذلك القوى العاملة.",
     },
   },
 ];
